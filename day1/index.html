@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        a{
+            text-decoration: none;
+
+        }
+        ul,li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<a href="#/item">跳转页</a>
+
+<div ng-view></div>
+<script src="../libs/angular.js"></script>
+<script src="../libs/angular-route.js"></script>
+<script>
+    var myApp = angular.module('myApp', ['ngRoute']);
+    myApp.config(function($routeProvider){
+        $routeProvider.when('/item',{
+            templateUrl:'a.html',
+            controller:['$scope',function($scope){
+                $scope.lists=[{name:'1',id:1},{name:'2',id:2},{name:'3',id:3}]
+            }]
+        }).when('/item/:id',{
+            templateUrl:'b.html',
+            controller:['$scope','$routeParams',function($scope,$routeParams){
+                $scope.id=$routeParams.id;
+            }]
+        })
+    })
+
+</script>
+</body>
+</html>
