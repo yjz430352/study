@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../componments/reset.css">
+    <script src="../libs/angular.js"></script>
+    <script src="../libs/angular-ui-router.js"></script>
+</head>
+<body>
+<button><a ui-sref="Page1">buttonA</a></button>
+<button><a ui-sref="Page2">buttonB</a></button>
+<div ui-view></div>
+<script>
+    var myApp = angular.module("myApp", ['ui.router']);
+    myApp.config(function ($stateProvider,$urlRouterProvider) {
+        $urlRouterProvider.when("", "Page1");
+        $stateProvider
+                .state("Page1", {
+                    url: "/Page1",
+                    templateUrl: "a.html"
+                })
+                .state("Page2", {
+                    url: "/Page2",
+                    templateUrl: "b.html"
+                })
+
+
+    });
+</script>
+
+</body>
+</html>
