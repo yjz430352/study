@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../libs/angular.js"></script>
+<script src="../libs/xeditable.js"></script>
+<body>
+<div ng-controller="newcontroller1">
+    <div>Email: <a href="#" editable-email="user.email">{{ user.email || 'empty' }}</a></div>
+    <div>Tel: <a href="#" editable-tel="user.tel" e-pattern="\d{3}\-\d{2}\-\d{2}" e-title="xxx-xx-xx">{{ user.tel ||
+        'empty' }}</a></div>
+    <div>Number: <a href="#" editable-number="user.number" e-min="18">{{ user.number || 'empty' }}</a></div>
+    <div>Range: <a href="#" editable-range="user.range" e-step="5">{{ user.range || 'empty' }}</a></div>
+    <div>Url: <a href="#" editable-url="user.url">{{ user.url || 'empty' }}</a></div>
+    <div>Search: <a href="#" editable-search="user.search">{{ user.search || 'empty' }}</a></div>
+    <div>Color: <a href="#" editable-color="user.color">{{ user.color || 'empty' }}</a></div>
+    <div>Date: <a href="#" editable-date="user.date">{{ (user.date | date: "yyyy-MM-dd") || 'empty' }}</a></div>
+    <div>Time: <a href="#" editable-time="user.time">{{ (user.time | date: "HH:mm") || 'empty' }}</a></div>
+    <div>Month: <a href="#" editable-month="user.month">{{ (user.month | date: "yyyy-MM") || 'empty' }}</a></div>
+    <div>Week: <a href="#" editable-week="user.week">{{ (user.week | date: "yyyy-Www") || 'empty'}}</a></div>
+    <div>Password: <a href="#" editable-password="user.password">{{ user.password || 'empty' }}</a></div>
+</div>
+<script>
+    var app = angular.module("myApp", ["xeditable"]);
+    app.controller('newcontroller1', function ($scope) {
+        $scope.user = {
+            email: '597500644@qq.com',
+            tel: '15101028531',
+            number: 26,
+            range: 1,
+            url: 'http://597500644@qq.com',
+            search: 'aaphoc',
+            color: '#eeeeee',
+            date: null,
+            time: new Date(1990, 04, 10, 06, 00),
+            month: 4,
+            week: 2,
+            password: '123456'
+        };
+    })
+</script>
+
+</body>
+</html>
